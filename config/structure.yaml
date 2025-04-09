@@ -1,0 +1,20 @@
+project:
+  - preproduction:
+      - references
+      - storyboards
+      - designs:
+          - characters:
+              - poku:
+                  - exports
+  - production:
+      - assets:
+          - characters
+          - props
+          - environments
+      - shots:
+          - sh001
+          - sh002
+          - sh003
+  - renders:
+      - previews
+  - database

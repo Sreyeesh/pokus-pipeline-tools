@@ -1,0 +1,71 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.log
+*.sqlite3
+*.db
+*.db-journal
+*.egg-info/
+.env
+.venv/
+venv/
+.envrc
+
+# Krita / Blender
+*.kra~                # Krita backup files
+*.autosave.kra        # Krita autosaves
+*.blend1              # Blender backups
+*.blend2
+*.blend@
+
+# Project DB
+database/pipeline.db
+
+# Docker
+*.tar
+*.img
+*.bak
+docker-compose.override.yml
+.docker/
+.dockerignore
+
+# VS Code / Editor files
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# OS-specific
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Build / Packaging
+build/
+dist/
+*.spec
+*.bak
+*.tmp
+
+# Logs and dumps
+*.log
+*.out
+*.tmp
+*.swp
+*.bak
+*.pid
+nohup.out
+
+# Python testing
+.coverage
+.tox/
+.pytest_cache/
+htmlcov/
+coverage.xml
+
+# Launcher generated output (if any)
+*.exe
+launcher.log
+venv/

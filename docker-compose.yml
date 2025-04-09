@@ -1,0 +1,16 @@
+version: "3.9"
+
+services:
+  pokus_pipeline:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: pokus_pipeline
+    volumes:
+      - /mnt/c/Projects/Pokus:/studio/project
+      - ./pipeline_scripts:/studio/pipeline_scripts
+      - ./config:/studio/config
+      - ./docker/entrypoint.sh:/studio/entrypoint.sh  # ✅ mount the script
+    working_dir: /studio
+    tty: true
+    entrypoint: ["bash", "/studio/entrypoint.sh"]
