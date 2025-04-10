@@ -1,17 +1,17 @@
 #!/bin/bash
-
 set -e
+set -o pipefail
 
 PROJECT_PATH="/studio/project"
 CMD="$1"
 
-# 📁 Ensure the project directory exists
+# 📁 Ensure the project folder exists
 if [ ! -d "$PROJECT_PATH" ]; then
   echo "📁 Creating project folder at $PROJECT_PATH..."
   mkdir -p "$PROJECT_PATH"
 fi
 
-# 🚀 Command handler
+# 🚀 Handle commands
 case "$CMD" in
   init)
     echo "📦 Initializing project structure..."
@@ -29,7 +29,10 @@ case "$CMD" in
     echo "🗃️ Registering assets and shots into database..."
     python3 pipeline_scripts/register_from_structure.py
     ;;
-  help|--help|-h)
+  bash)
+    exec bash
+    ;;
+  help|--help|-h|"")
     echo "🛠️  Available commands:"
     echo "  init        - Generate project folder structure"
     echo "  validate    - Validate naming conventions and structure"

@@ -1,13 +1,10 @@
-# config/naming.yaml
+naming:
+  asset_prefixes:
+    character: "char_"
+    prop: "prop_"
+    environment: "env_"
 
-asset_prefixes:
-  character: "char_"
-  prop: "prop_"
-  environment: "env_"
-
-shot_format: "sh{num:03d}"
-
-version_format: "v{num:03d}"
-allowed_version_tags: ["wip", "final"]
-
-export_pattern: "{name}_{version}.{ext}"
+  shot_format: "sh{num:03d}"
+  version_format: "v{num:03d}"
+  allowed_version_tags: ["wip", "final"]
+  export_pattern: "{name}_{version}.{ext}"

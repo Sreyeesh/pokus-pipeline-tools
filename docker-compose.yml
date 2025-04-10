@@ -5,7 +5,7 @@ services:
       dockerfile: docker/Dockerfile
     container_name: pokus_pipeline
     volumes:
-      - ../projects/pokus-short:/studio/project
+      - ${STUDIO_PATH}:/studio/project
       - ./pipeline_scripts:/studio/pipeline_scripts
       - ./config:/studio/config
     working_dir: /studio

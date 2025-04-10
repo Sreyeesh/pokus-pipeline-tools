@@ -1,5 +1,5 @@
-env_mode: dev
+dev:
+  STUDIO_PATH: /mnt/c/Projects/PipelineTest
 
-paths:
-  dev: /mnt/c/Projects/PipelineTest
-  prod: /mnt/c/Projects/Pokus
+prod:
+  STUDIO_PATH: /mnt/c/Projects/Pokus
