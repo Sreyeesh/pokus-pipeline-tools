@@ -1,5 +1,7 @@
 dev:
   STUDIO_PATH: /mnt/c/Projects/PipelineTest
+  LAUNCHER_PATH: /mnt/c/Users/sgari/Desktop
 
 prod:
   STUDIO_PATH: /mnt/c/Projects/Pokus
+  LAUNCHER_PATH: /mnt/c/Users/sgari/Desktop
