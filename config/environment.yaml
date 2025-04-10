@@ -1,0 +1,5 @@
+env_mode: dev
+
+paths:
+  dev: /mnt/c/Projects/PipelineTest
+  prod: /mnt/c/Projects/Pokus
