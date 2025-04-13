@@ -3,5 +3,5 @@ dev:
   LAUNCHER_PATH: /mnt/c/Users/sgari/Desktop
 
 prod:
-  STUDIO_PATH: /mnt/c/Projects/Pokus
+  STUDIO_PATH: /mnt/c/Projects/Tuulekera
   LAUNCHER_PATH: /mnt/c/Users/sgari/Desktop

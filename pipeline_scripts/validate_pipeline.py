@@ -32,8 +32,13 @@ def validate_structure(project_root: str, config_path: str):
         else:
             print(f"⚠️  Skipped {asset_type} validation — path missing: {asset_path}")
 
-    # Validate character design exports
-    export_path = os.path.join(project_root, "preproduction", "designs", "characters", "poku", "exports")
+    # Validate character design exports (for char_poku)
+    character_prefix = config.get("asset_prefixes", {}).get("character", "")
+    character_folder = f"{character_prefix}poku"
+    export_path = os.path.join(
+        project_root, "preproduction", "designs", "characters", character_folder, "exports"
+    )
+
     if os.path.exists(export_path):
         for file in os.listdir(export_path):
             if not is_valid_export_name(file, config):

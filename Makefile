@@ -1,6 +1,10 @@
 # ✨ Default environment is dev, can be overridden via ENV_MODE=prod
 ENV_MODE ?= dev
 
+# ✅ Load STUDIO_PATH and LAUNCHER_PATH from env.auto
+-include env.auto
+export
+
 # 📥 Generate env.auto from config/environment.yaml
 generate-env:
 	@echo "🔁 Using ENV_MODE=$(ENV_MODE)"
@@ -56,6 +60,9 @@ doctor:
 dev-init:
 	ENV_MODE=dev $(MAKE) init-db init
 
+dev-init-db:
+	ENV_MODE=dev $(MAKE) init-db
+
 dev-validate:
 	ENV_MODE=dev $(MAKE) validate
 
@@ -71,9 +78,15 @@ dev-bash:
 dev-down:
 	ENV_MODE=dev $(MAKE) down
 
+dev-reset:
+	ENV_MODE=dev $(MAKE) reset
+
 # 📦 Prod environment
 prod-init:
 	ENV_MODE=prod $(MAKE) init-db init
+
+prod-init-db:
+	ENV_MODE=prod $(MAKE) init-db
 
 prod-validate:
 	ENV_MODE=prod $(MAKE) validate
@@ -89,6 +102,20 @@ prod-bash:
 
 prod-down:
 	ENV_MODE=prod $(MAKE) down
+
+prod-reset:
+	ENV_MODE=prod $(MAKE) reset
+
+# 🧾 View database records (shots and assets)
+view-db:
+	sqlite3 $(STUDIO_PATH)/database/pipeline.db "SELECT '📽️  SHOTS:', * FROM shots; SELECT '🎨 ASSETS:', * FROM assets;"
+
+# 🚨 Reset the entire pipeline (clean, init, db, register)
+reset: generate-env
+	@echo "⚠️  Resetting the pipeline at: $(STUDIO_PATH)"
+	@rm -rf $(STUDIO_PATH)
+	@mkdir -p $(STUDIO_PATH)
+	$(MAKE) init-db init register
 
 # 🛠️ Help menu
 help:
@@ -107,16 +134,23 @@ help:
 	@echo ""
 	@echo "🎯 Dev Targets:"
 	@echo "  make dev-init         → Dev: Init DB + folder structure"
+	@echo "  make dev-init-db      → Dev: Init DB only"
 	@echo "  make dev-validate     → Dev: Validate naming"
 	@echo "  make dev-register     → Dev: Register assets"
 	@echo "  make dev-build        → Dev: Build image"
 	@echo "  make dev-bash         → Dev: Open container shell"
 	@echo "  make dev-down         → Dev: Stop containers"
+	@echo "  make dev-reset        → Dev: Reset project structure & DB"
 	@echo ""
 	@echo "🎯 Prod Targets:"
 	@echo "  make prod-init        → Prod: Init DB + folder structure"
+	@echo "  make prod-init-db     → Prod: Init DB only"
 	@echo "  make prod-validate    → Prod: Validate naming"
 	@echo "  make prod-register    → Prod: Register assets"
 	@echo "  make prod-build       → Prod: Build image"
 	@echo "  make prod-bash        → Prod: Open container shell"
 	@echo "  make prod-down        → Prod: Stop containers"
+	@echo "  make prod-reset       → Prod: Reset project structure & DB"
+	@echo ""
+	@echo "🧾 DB View:"
+	@echo "  make view-db          → Print shots and assets from DB"
