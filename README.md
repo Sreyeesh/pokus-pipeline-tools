@@ -171,11 +171,6 @@ This helps maintain separation between pipeline logic and creative identity.
 ## 📬 Contact
 
 
-> Powered by Make, Docker, Python, and love for clean workflows.
-
-
-## 📬 Contact
-
 **Pipeline TD / Director**  
 Sreyeesh Garimella  
 ✉️ [GitHub](https://github.com/Sreyeesh)  
